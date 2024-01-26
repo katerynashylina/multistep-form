@@ -1,0 +1,9 @@
+@import '../../utils/variables.scss';
+
+.add-ons {
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

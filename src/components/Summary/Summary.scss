@@ -1,0 +1,98 @@
+@import '../../utils/variables.scss';
+
+.summary {
+  &__wrap {
+    width: 460px;
+    height: min-content;
+    background-color: $lighterBlueColor;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 1rem 1rem;
+    font-size: 14px;
+    color: $sideColor;
+    margin-bottom: 20px;
+  }
+
+  &__main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 35px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      background-color: $lightGrayColor;
+      height: 1px;
+      width: 433px;
+      top: 62px;
+      right: -0.5px;
+    }
+  }
+
+  &__price {
+    font-weight: 600;
+    color: $textColor;
+  }
+
+  &__name {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: $textColor;
+  }
+
+  &__change {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    border-bottom: 1px solid $sideColor;
+
+    transition: color 0.3s, border-bottom-color 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      color: $blueColor;
+      border-bottom-color: $blueColor;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &--wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    &--price {
+      color: $textColor;
+    }
+  }
+
+  &__total {
+    margin-inline: 10px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    
+    &--text {
+      color: $sideColor;
+    }
+
+    &--price {
+      font-weight: 700;
+      font-size: 16px;
+      color: $blueColor;
+    }
+  }
+}

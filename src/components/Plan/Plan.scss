@@ -1,0 +1,61 @@
+@import '../../utils/variables.scss';
+
+.plan {
+  &__cards {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 27px;
+  }
+}
+
+.term {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 460px;
+  background-color: hsl(217, 100%, 97%);
+  border-radius: 5px;
+  gap: 1rem;
+
+  &__switcher {
+    width: 40px;
+    height: 20px;
+    background-color: $textColor;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 2px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+
+    &--circle {
+      width: 14px;
+      height: 14px;
+      background-color: $whiteColor;
+      border-radius: 50%;
+      transition: transform 0.3s ease-in-out;
+
+      &--month {
+        transform: translateX(0);
+      }
+
+      &--year {
+        transform: translateX(20px);
+      }
+    }
+  }
+
+  &__text {
+    font-size: 0.9rem;
+    font-family: 600;
+    color: $sideColor;
+
+    transition: color 0.3s;
+
+    &--active {
+      color: $textColor;
+    }
+  }
+}

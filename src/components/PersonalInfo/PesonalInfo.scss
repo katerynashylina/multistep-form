@@ -1,0 +1,74 @@
+@import '../../utils/variables.scss';
+@import "../../utils/mixins.scss";
+
+.personal-info {
+  @include onDesktop {
+    width: 588px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 1rem;
+
+    &--wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &--error {
+      color: $redColor;
+    }
+  }
+
+  &__input {
+    height: 40px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    font-weight: 600;
+    border: 1px solid hsl(228.75deg 24.24% 87.06%);
+
+    transition: border 0.3s;
+
+    &--valid {
+      border: 1px solid hsl(228.75deg 24.24% 87.06%);
+      color: $textColor;
+
+      &:hover {
+        border: 1px solid $blueColor;
+      }
+  
+      &:focus {
+        border: 1px solid $blueColor;
+        outline: none;
+      }
+    }
+
+    &--error {
+      border: 1px solid $redColor;
+      color: $redColor;
+
+      &::placeholder {
+        color: $redColor;
+      }
+
+      &:focus {
+        border-color: $redColor;
+        outline: none;
+      }
+    }
+
+    &::placeholder {
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 500;
+    }
+  }
+}

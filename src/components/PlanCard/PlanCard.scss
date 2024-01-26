@@ -1,0 +1,55 @@
+@import '../../utils/variables.scss';
+
+.plan-card {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 140px;
+    height: 145px;
+    border: 1px solid hsl(229, 24%, 87%);
+    border-radius: 6px;
+    padding: 1rem;
+    box-sizing: border-box;
+
+    transition: border 0.3s, background-color 0.3s;
+
+    &--bigger {
+      height: 170px;
+    }
+
+    &--selected {
+      border: 1px solid $textColor;
+      background-color: hsl(217, 100%, 97%);
+    }
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $textColor;
+      background-color: hsl(217, 100%, 97%);
+    }
+  }
+
+  &__image {
+    margin-bottom: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  &__name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  &__price {
+    font-size: 14px;
+    font-weight: 500;
+    color: $sideColor;
+  }
+
+  &__subtitle {
+    font-size: 0.8rem;
+    margin-top: 10px;
+  }
+}

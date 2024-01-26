@@ -1,0 +1,16 @@
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 4rem;
+
+  &__text {
+    text-align: center;
+    max-width: 400px;
+  }
+
+  &__image {
+    margin-bottom: 1rem;
+  }
+}

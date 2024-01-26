@@ -1,0 +1,36 @@
+@import '../../utils/variables.scss';
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 40px;
+  background-color: $textColor;
+  color: $whiteColor;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  border: 1px solid $textColor;
+
+  transition: background-color 0.3s, color 0.3s;
+
+  &--disabled {
+    background-color: #4e6786;
+    border: 1px solid #4e6786;
+
+    &:hover {
+      cursor: default;
+      background-color: #4e6786;
+      border: 1px solid #4e6786;
+    }
+  }
+
+  &--valid {
+    &:hover {
+      cursor: pointer;
+      background-color: $whiteColor;
+      color: $textColor;
+    }
+  }
+}

@@ -1,0 +1,76 @@
+@import "./utils/variables.scss";
+@import "./utils/mixins.scss";
+
+@font-face {
+  font-family: Ubuntu-Regular;
+  src: url("../public/fonts/Ubuntu-Regular.ttf");
+}
+
+@font-face {
+  font-family: Ubuntu-Medium;
+  src: url("../public/fonts/Ubuntu-Medium.ttf");
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url("../public/fonts/Ubuntu-Bold.ttf");
+}
+
+.page {
+  font-family: Ubuntu-Regular, sans-serif;
+  background-color: $backgroundColor;
+  height: 100vh;
+  padding: 15px;
+  box-sizing: border-box;
+
+  @include onDesktop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__container {
+      display: flex;
+      flex-direction: row;
+      max-width: 920px;
+      width: 100%;
+      height: 100vh;
+      max-height: 600px;
+      color: $textColor;
+      background-color: $whiteColor;
+      border-radius: 8px;
+      padding: 16px;
+      box-sizing: border-box;
+      box-shadow: 2px 5px 16px rgb(189 188 196);
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.form {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 4rem;
+    // height: 390px;
+  }
+
+  &__title {
+    margin-bottom: 10px;
+  }
+
+  &__subtitle {
+    margin-bottom: 2rem;
+    color: $sideColor;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
