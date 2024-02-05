@@ -9,25 +9,26 @@ import { Summary } from './components/Summary/Summary';
 import { Navigation } from './components/Navigation/Navigation';
 import { ButtonNext } from './components/ButtonNext/ButtonNext';
 import { ButtonConfirm } from './components/ButtonConfirm/ButtonConfirm';
-import { useAppSelector } from './app/hooks';
-import { steps } from './utils/consts';
+import { useAppDispatch, useAppSelector } from './app/hooks';
+import { emailRegex, phoneRegex, steps } from './helpers/consts';
 import { Confirmation } from './components/Confirmation/Confirmation';
 import { BackButton } from './components/BackButton/BackButton';
-import { useLocalStorage } from './utils/useLocalStorage';
+import { useLocalStorage } from './helpers/useLocalStorage';
 import { useEffect, useState } from 'react';
+import { setIsValid } from './features/isValid';
 import { FormType } from './types/FormType';
 
 export const App = () => {
   const location = useLocation();
   const currentURL = location.pathname;
   const currentStepNumber = useAppSelector(state => state.currentStepNumber.currentStepNumber);
+  const dispatch = useAppDispatch();
 
   const [currentAdds, setCurrentAdds] = useLocalStorage([], 'add-ons');
 
   const initialValues = { name: "", email: "", phone: "" };
-  const [formData, setFormData] = useState({ ...initialValues });
+  const [formData, setFormData] = useLocalStorage({ ...initialValues }, 'form-info');
   const [formErrors, setFormErrors] = useState({ ...initialValues });
-  const [isValid, setIsValid] = useState(false);
 
   const validateForm = () => {
     const newErrors = {
@@ -42,13 +43,11 @@ export const App = () => {
     }
 
     // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim() || !emailRegex.test(formData.email)) {
       newErrors.email = 'Valid email is required';
     }
 
     // Phone validation
-    const phoneRegex = /^\+?\d{1,3}[-\s]?\d{3,}[-\s]?\d{3,}[-\s]?\d{3,}$/;
     if (!formData.phone.trim() || !phoneRegex.test(formData.phone)) {
       newErrors.phone = 'Valid 10-digit phone number is required';
     }
@@ -62,19 +61,21 @@ export const App = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
+    setFormData((prevData: FormType) => ({
       ...prevData,
       [name]: value,
     }));
 
     const isValidForm = validateForm();
-    setIsValid(isValidForm);
+    dispatch(setIsValid(isValidForm));
   };
 
   const handleSubmit = () => {
     const isValidForm = validateForm();
-    setIsValid(isValidForm);
+    dispatch(setIsValid(isValidForm));
   }
+
+  useEffect(() => {dispatch(setIsValid(false))}, []);
 
   return(
     <div className="page">
@@ -144,8 +145,6 @@ export const App = () => {
                   <ButtonConfirm />
                 ) : (<ButtonNext
                   handleSubmit={handleSubmit}
-                  isValid={isValid}
-                  // formErrors={formErrors}
                 />)}
                 </>
             )}

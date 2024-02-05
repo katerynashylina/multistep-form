@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { terms } from '../utils/consts';
+import { terms } from '../helpers/consts';
 
 const initialState = {
   term: terms[0],

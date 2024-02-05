@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import './ButtonConfirm.scss';
 import { useAppDispatch } from '../../app/hooks';
 import { setCurrentStepNumber } from '../../features/stepNumber';
-import { steps } from '../../utils/consts';
+import { steps } from '../../helpers/consts';
 
 export const ButtonConfirm = () => {
   const navigate = useNavigate();

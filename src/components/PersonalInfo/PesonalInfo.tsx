@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 
 import './PesonalInfo.scss';
-import { useEffect, useState } from 'react';
 import { FormType } from '../../types/FormType';
 
 type Props = {

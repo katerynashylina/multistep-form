@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { steps } from '../utils/consts';
+import { steps } from '../helpers/consts';
 
 const initialState = {
   currentStepNumber: steps[0].number,

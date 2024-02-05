@@ -2,18 +2,18 @@ import { useNavigate } from 'react-router-dom';
 import './ButtonNext.scss';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { setCurrentStepNumber } from '../../features/stepNumber';
-import { steps } from '../../utils/consts';
+import { steps } from '../../helpers/consts';
 import classNames from 'classnames';
 import React from 'react';
 import { FormType } from '../../types/FormType';
 
 type Props = {
   handleSubmit: () => void,
-  isValid: boolean,
 }
 
-export const ButtonNext: React.FC<Props> = ({ handleSubmit, isValid }) => {
+export const ButtonNext: React.FC<Props> = ({ handleSubmit }) => {
   const currentStepNumber = useAppSelector((state) => state.currentStepNumber.currentStepNumber);
+  const isValid = useAppSelector(state => state.isValid.isValid);
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();

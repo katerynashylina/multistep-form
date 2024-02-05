@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { plans } from '../utils/consts';
+import { plans } from '../helpers/consts';
 
 const initialState = {
   currentPlan: plans[0],

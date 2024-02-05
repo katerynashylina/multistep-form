@@ -1,11 +1,11 @@
 import './AddOnCard.scss';
 
-import { terms } from '../../utils/consts';
+import { terms } from '../../helpers/consts';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { setAddedOns } from '../../features/addedOns';
 import { AddOn } from '../../types/AddOn';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
+import { Terms } from '../Terms/Terms';
 
 type Props = {
   addOn: AddOn,
@@ -14,8 +14,6 @@ type Props = {
 
 export const AddOnCard: React.FC<Props> = ({ addOn, handleAddOnSelection }) => {
   const { id, name, text, price } = addOn;
-
-  const term = useAppSelector(state => state.term.term);
 
   const [isSelected, setIsSelected] = useState(false);
 
@@ -55,7 +53,9 @@ export const AddOnCard: React.FC<Props> = ({ addOn, handleAddOnSelection }) => {
         </div>
 
         <p className="card__price">
-          {term === terms[0] ? `+$${price}/mo` : `+$${price * 10}/yr`}
+          <Terms
+            price={price}
+          />
         </p>
       </label>
     </div>

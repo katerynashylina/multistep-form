@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { setCurrentStepNumber } from "../../features/stepNumber";
-import { steps } from "../../utils/consts";
+import { steps } from "../../helpers/consts";
 import './BackButton.scss';
 import classNames from "classnames";
 

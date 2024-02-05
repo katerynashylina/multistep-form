@@ -1,4 +1,4 @@
-import { steps } from "../../utils/consts";
+import { steps } from "../../helpers/consts";
 import { Step } from "../Step/Step";
 
 import './Navigation.scss';

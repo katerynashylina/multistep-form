@@ -1,7 +1,7 @@
 import { AddOnCard } from '../AddOnCard/AddOnCard';
 import './AddOns.scss';
 
-import { addOns } from '../../utils/consts';
+import { addOns } from '../../helpers/consts';
 import { AddOn } from '../../types/AddOn';
 
 type Props = {
@@ -11,16 +11,15 @@ type Props = {
 
 export const AddOns: React.FC<Props> = ({ currentAdds, setCurrentAdds }) => {
   const handleAddOnSelection = (selectedAddOn: AddOn) => {
-    const index = currentAdds.findIndex((addOn) => addOn.id === selectedAddOn.id);
-    let updatedAdds = [...currentAdds];
-
-    if (index === -1) {
-      updatedAdds = [...currentAdds, selectedAddOn];
-    } else {
-      updatedAdds.splice(index, 1);
-    }
-
-    setCurrentAdds(updatedAdds);
+    setCurrentAdds((prevAdds) => {
+      const isAlreadySelected = prevAdds.some((addOn) => addOn.id === selectedAddOn.id);
+      
+      if (isAlreadySelected) {
+        return prevAdds.filter((addOn) => addOn.id !== selectedAddOn.id);
+      } else {
+        return [...prevAdds, selectedAddOn];
+      }
+    });
   };
 
   return(

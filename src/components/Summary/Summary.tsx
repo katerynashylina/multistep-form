@@ -1,8 +1,9 @@
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { setTerm } from '../../features/term';
 import { AddOn } from '../../types/AddOn';
-import { terms } from '../../utils/consts';
+import { terms } from '../../helpers/consts';
 import './Summary.scss';
+import { Terms } from '../Terms/Terms';
 
 type Props = {
   currentAdds: AddOn[],
@@ -19,14 +20,9 @@ export const Summary: React.FC<Props> = ({ currentAdds, setCurrentAdds }) => {
     dispatch(setTerm(newTerm));
   }
 
-  const addOnPrices = currentAdds.map((addOn) => addOn.price);
-  const total = addOnPrices.reduce(
-    (accumulator, currentPrice) => accumulator + currentPrice, currentPlan.price
+  const total = currentAdds.reduce(
+    (accumulator, currentAdd) => accumulator + currentAdd.price, currentPlan.price
   );
-
-  // console.log(currentAdds)
-
-  // console.log(addedOns, 'step 4')
 
   return(
     <div className="summary">
@@ -56,10 +52,9 @@ export const Summary: React.FC<Props> = ({ currentAdds, setCurrentAdds }) => {
             </div>
 
             <p className="summary__price">
-              {term === terms[0]
-                ? `$${currentPlan.price}/mo`
-                : `$${currentPlan.price * 10}/yr`
-              }
+              <Terms
+                price={currentPlan.price}
+              />
             </p>
           </div>
 
@@ -81,11 +76,9 @@ export const Summary: React.FC<Props> = ({ currentAdds, setCurrentAdds }) => {
                   className="summary__list--price"
                   key={addedOn.id}
                 >
-                  {/* {`+$${addedOn.price}/mo`} */}
-                  {term === terms[0]
-                    ? `+$${addedOn.price}/mo`
-                    : `+$${addedOn.price * 10}/yr`
-                  }
+                  <Terms
+                    price={addedOn.price}
+                  />
                 </li>
               ))}
             </div>
@@ -100,7 +93,9 @@ export const Summary: React.FC<Props> = ({ currentAdds, setCurrentAdds }) => {
           </p>
 
           <p className="summary__total--price">
-            {term === terms[0] ? `+$${total}/mo` : `+$${total * 10}/yr`}
+            <Terms
+              price={total}
+            />
           </p>
         </p>
       </div>

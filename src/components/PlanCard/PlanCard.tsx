@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 import './PlanCard.scss';
-import { terms } from '../../utils/consts';
+import { terms } from '../../helpers/consts';
 import { useAppSelector } from '../../app/hooks';
 import { PlanType } from '../../types/PlanType';
 
@@ -30,7 +30,7 @@ export const PlanCard: React.FC<Props> = ({
           "plan-card__container--bigger": term === terms[1],
         })}
       >
-        <img src={`/img/${image}`} alt="image" className="plan-card__image" />
+        <img src={`img/${image}`} alt="image" className="plan-card__image" />
 
         <p className="plan-card__name">
           {name}

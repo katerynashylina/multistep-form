@@ -2,7 +2,7 @@ import { useState } from 'react';
 import classNames from 'classnames';
 
 import './Plan.scss';
-import { plans, terms } from '../../utils/consts';
+import { plans, terms } from '../../helpers/consts';
 import { PlanCard } from '../PlanCard/PlanCard';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { setTerm } from '../../features/term';
